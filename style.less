@@ -1,0 +1,180 @@
+@darkest: 
+@dark:#053C5B
+@mid:
+@highlight:
+@lightest:
+@darkest2:
+@dark2:
+@mid2:
+@highlight2:
+
+/* Default styles 
+*
+* Dark Color: #053C5B
+* Link/mid Color: #1C6691
+* Light bk color: #f3fbfe
+* */
+
+/* Text Colors */
+h1, h2,
+.billingDetailTable .detailHeader .headerHighlight,
+.select-purchase .total-line .price,
+.workEmployer,
+.educationSchool,
+.roleInfo h3,
+.appInfo h3,
+.userList-row.selected .userInfo *,
+.reviews-row .summary,
+.modal-content h2,
+.manageapp-info .appName {
+color:#053C5B;
+}
+a, .linkLook,
+#billsTable tr:hover td,
+.slider-content li:hover .viewAll,
+.slider-content li .viewAll.simpleArrow:hover,
+.icon.simpleArrow:hover,
+.gettingStartedList a,
+.gettingStartedList li:hover,
+.gettingStartedList li.completed-item:hover,
+.dropdown li,
+.hoverWrap,
+.editProfile,
+.teambox td,
+.slider-content .viewAll,
+.reviews-row .row-lastLine,
+.resources-row.notAvailable,
+.pricing-panel h1 {
+color:#1C6691;
+}
+a:hover,
+.dropdown li:hover,
+.slider-content .viewAll:hover {
+color:#053C5B;
+}
+
+/* Gradient */
+#tab_nav li.selected span,
+#paginationRow .page-num em span,
+#paginationRow .page-num:hover em span,
+.header_nav,
+.wicket-modal .modal .w_caption {
+background: #1C6691; /* old browsers */
+background: -moz-linear-gradient(top, #1C6691 0%, #053C5B 100%); /* firefox */
+background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#1C6691), color-stop(100%,#053C5B)); /* webkit */
+filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#1C6691', endColorstr='#053C5B',GradientType=0 ); /* ie */
+background: -o-linear-gradient(top, #1C6691 0%,#053C5B 100%); /* opera */
+color:#fff;
+}
+#topnav li.selected,
+#topnav li.selected span {
+background: #053C5B; 
+color:#fff;
+}
+/* Borders related to Gradient */
+#topnav {
+border-left:1px solid #053C5B;
+border-right:1px solid #1C6691;
+}
+#topnav li {
+border-right:1px solid #053C5B;
+border-left:1px solid #1C6691;
+}
+.header_nav {
+border-bottom:1px solid #000;
+}
+#paginationRow .page-num em span {
+border:1px solid #053C5B;
+}
+/* Dark color */
+#subnav-header {
+background:#053C5B;
+-moz-box-shadow: inset 0px 2px 5px 0px #000;
+-webkit-box-shadow: inset 0px 2px 5px 0px #000;
+box-shadow: inset 0px 2px 5px 0px #000;
+border-bottom:#000;
+}
+#subnav-header li.active,
+#subnav-header li:hover {
+color:#fff;
+}
+
+/* Mid Color */
+.htabs-content .checkboxBg {
+background:#1C6691;
+}
+#usernav li:hover a,
+#usernav li:hover .account,
+#usernav li.selected a {
+background-color:#053C5B;
+color:#fff;
+}
+/* Light Mid Mystery color */
+#subnav-header li,
+#usernav li a,
+#usernav li .account {
+color:#83bdd3;
+}
+.purchase-content .confirmOrder .bluebk,
+#purchaseFaqs,
+.blueBox-section {
+border:1px solid #83bdd3;
+}
+
+/* Light background color */
+.bluebk,
+.accountMenu li a.active,
+.accountMenu li a:hover,
+.item-table tr th,
+#billsTable tr:hover td,
+.select-purchase tr.total-line.final td,
+.select-purchase div.total-line.final,
+.wicket-modal .modal .modal-footer,
+#purchaseFaqs,
+.select-purchase tr.selected td,
+.blueBox-section,
+.appSelected,
+.userList-row.selected,
+.role,
+.assignRolesText,
+.questionAnswered,
+#answers .feedback-item.officiallyAnswered,
+.htabs-wrap .htabs-content,
+.cmsMenu-section .subList li a:hover,
+.cmsMenu-section .subList li a.active,
+.cmsMenu-section li .toggleParent:hover,
+.cmsMenu-section li a:hover,
+.cmsMenu-section li a.active,
+#sidePanelList li {
+background-color:#f3fbfe;
+}
+
+/* -------------------------------
+ *  Buttons 
+  *  ------------------------------ */
+  button {
+  color:#555;
+  -moz-border-radius:5px;
+  border-radius:5px;
+  padding:6px 10px;
+  font-size:12px;
+  cursor: pointer;
+  overflow: visible;
+  border:1px solid #acacac;
+  background: #eeeeee; /* old browsers */
+  background: -moz-linear-gradient(top, #eeeeee 0%, #cccccc 100%); /* firefox */
+  background: -webkit-gradient(linear, left top, left bottom, color-stop(0%,#eeeeee), color-stop(100%,#cccccc)); /* webkit */
+  filter: progid:DXImageTransform.Microsoft.gradient( startColorstr='#eeeeee', endColorstr='#cccccc',GradientType=0 ); /* ie */
+  background: -o-linear-gradient(top, #eeeeee 0%,#cccccc 100%); /* opera */
+  text-shadow: -1px -1px 0px #e6e6e6;
+  filter: dropshadow(color=#e6e6e6, offx=-1, offy=-1);
+  }
+  button::-moz-focus-inner {
+  border: none;  /* overrides extra padding in Firefox */
+  }
+  button.huge {
+  padding:15px 20px;
+  border:1px solid #053C5B;
+  font-size:16px;
+  max-width:208px;
+  }

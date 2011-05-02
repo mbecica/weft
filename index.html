@@ -1,0 +1,66 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
+<title>Weft: Generate CSS</title>
+<link rel="stylesheet/less" type="text/css" href="style.css" />
+<script type="text/javascript" src="js/raphael.js"></script>
+<script type="text/javascript" src="js/less.js"></script>
+<script type="text/javascript" src="js/appdirectIcons.js"></script>
+</head>
+<body>
+<div id="content">
+  <form id="palette">
+  <h1>Palette</h1>
+  <div class="form-row">
+    <label for="darkest">Darkest Color:</label>
+    <input type="text" id="darkest" maxlength:"6" />
+    <span class="form-note">Borders gradient, subnav color</span>
+  </div>
+  <div class="form-row">
+    <label for="dark">Dark Color:</label>
+    <input type="text" id="dark" maxlength:"6" />
+    <span class="form-note">Dark gradient, page title color</span>
+  </div>
+  <div class="form-row">
+    <label for="mid">Mid Color:</label>
+    <input type="text" id="mid" maxlength:"6" />
+    <span class="form-note">Light gradient, link color, icon color</span>
+  </div>
+  <div class="form-row">
+    <label for="highlight">Highlight Color:</label>
+    <input type="text" id="highlight" maxlength:"6" />
+    <span class="form-note">sits on top of gradient, highlights gradient</span>
+  </div>
+  <div class="form-row">
+    <label for="lightest">Block background:</label>
+    <input type="text" id="lightest" maxlength:"6" />
+    <span class="form-note">usually close to white, highlights on top of page background</span>
+  </div>
+  <h2>Secondary Palette for action button</h2>
+  <div class="form-row">
+    <label for="darkest2">Darkest Color:</label>
+    <input type="text" id="darkest2" maxlength:"6" />
+    <span class="form-note">Borders gradient</span>
+  </div>
+  <div class="form-row">
+    <label for="dark2">Dark Color:</label>
+    <input type="text" id="dark2" maxlength:"6" />
+    <span class="form-note">Dark gradient</span>
+  </div>
+  <div class="form-row">
+    <label for="mid2">Mid Color:</label>
+    <input type="text" id="mid2" maxlength:"6" />
+    <span class="form-note">Light gradient</span>
+  </div>
+  <div class="form-row">
+    <label for="highlight2">Highlight Color:</label>
+    <input type="text" id="highlight2" maxlength:"6" />
+    <span class="form-note">highlights gradient</span>
+  </div>
+
+  <button type="submit">Save</button>
+  </form>
+</div>
+</body>
+</html>
