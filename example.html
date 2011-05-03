@@ -4,26 +4,23 @@
 <meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1" />
 <title>Weft: Custom Icon Example</title>
 <link rel="stylesheet/less" type="text/css" href="style.less" />
-<script type="text/javascript" src="js/raphael.js"></script>
-<script type="text/javascript" src="js/plump.js"></script>
 <script type="text/javascript" src="js/jquery.js"></script>
+<script type="text/javascript" src="js/raphael.js"></script>
+<script type="text/javascript" src="js/plumpette.js"></script>
 <script type="text/javascript" src="js/less.js"></script>
 <script type="text/javascript" src="js/palette.js"></script>
 <script type="text/javascript" src="js/appdirectIcons.js"></script>
-<script type="text/javascript" src="js/iconAttrs.js"></script>
+<script type="text/javascript" src="js/brandedIcons.js"></script>
 <script type="text/javascript">
 window.onload = function() {
-    var iconList = ['hIcon, icon'],
-        iconEl = $('.hIcon, .icon');
+    var iconEl = $('.hIcon, .icon');
     iconEl.each(function() {
-	var r = Raphael($(this)[0], 16, 16),
-	icon = r.path(ADicons[getIconClass($(this), iconList)]);
+    	if ($(this).hasClass('simpleArrowRight')) {
+	    makeIcon($(this), $(this).parent('a'));
+	} else if ($(this).hasClass('screenshots')){
+	    makeIcon($(this),$(this));
+	}
     });
-    window.icons = [];
-    for (var name in iconAttrs) {
-	    icons.push(iconAttrs[name]);
-    }
-    plump.rowList(icons, {x:100,y:100});
 }
 function getIconClass(element, exclude) {
     var classes = element.attr("className").split(" ");
@@ -35,17 +32,28 @@ function getIconClass(element, exclude) {
     });
     return curClass;
 };
+function makeIcon(element, parentTarget) {
+    var iconList = ['hIcon, icon'],
+	name = getIconClass(element, iconList);
+    if($.inArray(name, brandedIcons)) {
+	if (parentTarget) {
+	   plumpette.single(brandedIcons[name], name, parentTarget); 
+	} else {
+	   plumpette.single(brandedIcons[name], name);
+	}
+    }
+};
 </script>
 </head>
 <body>
 <div id="content">
-<a class="hIcon screenshot">Screenshot</a>
+<a class="hIcon screenshots">Screenshot</a>
 <ul>
     <li>
 	<a>List Element</a>
     </li>
     <li>
-	<a>List Element</a>
+	<a>List Element<span class="icon simpleArrowRight"></span></a>
     </li>
     <li>
 	<a><span class="icon add"></span>Add List Element</a>
