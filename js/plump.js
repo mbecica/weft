@@ -41,21 +41,17 @@ var plump = (function (Raphael) {
         var r = Raphael(x-2, y-2, attrs.size + 400, attrs.size + 400),
             s = r.path(ADicons[name]).translate(2, 2).attr({fill: 'none', stroke: attrs.glow, 'stroke-width': attrs['glow-width']}),
         icon = r.path(ADicons[name]).translate(2, 2).attr(attrs),
-        target = r.rect(0, 0, 32, 32).attr({fill: 'blue', opacity: 0.1})
+        target = r.rect(0, 0, 32, 32).attr({stroke:'none'})
               .click(function () {
                   if (attrs.click) {
                     icon.animate(attrs.click, attrs.click.duration);
-                  } else {
-                    icon.attr({fill: "90-#0050af-#002c62"});
-                  }
+                  } 
               }).hover(function () {
                   if (attrs.hover) {
                       icon.animate(attrs.hover, attrs.hover.duration);
                   }
-                  //s.stop().animate({opacity: 1}, 200);
                 }, function () {
                   icon.stop().attr(attrs);
-                  //s.stop().attr({opacity: 0});
                 });
       return { id: id++
                , icon: icon
@@ -80,6 +76,10 @@ var plump = (function (Raphael) {
                           target.hover(f);
                           return this;
                       }
+		, rotate: function(degree) {
+			icon.rotate(degree);
+			return this;
+			}
                , draggable: function() { return draggable(this);}
                }
 
