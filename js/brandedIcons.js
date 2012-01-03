@@ -7,5 +7,6 @@ var brandedIcons = {
     simpleArrowLeft:{"arrowleft": {'scale':'.5,.5',fill:AD.palette.mid,hover:{fill:AD.palette.dark}}},
     simpleArrowRight:{"arrow": {'scale':'.5,.5',fill:AD.palette.mid,hover:{fill:AD.palette.dark}}},
     screenshots:{"screenshot": {'scale':'1.2,1.2',fill:AD.palette.mid,hover:{fill:AD.palette.dark}}},
-    playarrow:{"playArrow": {fill:AD.palette.mid,hover:{fill:AD.palette.dark}}}
+    playarrow:{"playArrow": {fill:AD.palette.mid,hover:{fill:AD.palette.dark}}},
+	star:{"star":{fill:'#666',hover{fill:AD.palette.mid}}}
 };
