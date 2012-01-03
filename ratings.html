@@ -4,40 +4,34 @@
 <meta charset="utf-8">
 <title>PlumpJS Example: Star Ratings</title>
 <link rel="stylesheet" href="../style.css" type="text/css" media="screen">
-<script type="text/javascript" src="../../../jquery/jquery-1.5.2.js"></script>
+<script type="text/javascript" src="js/jquery.js"></script>
 <script type="text/javascript" src="js/raphael.js"></script>
-<script type="text/javascript" src="../../../raphael.serialize/raphael.serialize.js"></script>
-<script type="text/javascript" src="js/plump.js"></script>
+<script type="text/javascript" src="js/plumpette.js"></script>
 <script type="text/javascript" src="js/appdirectIcons.js"></script>
 <script type="text/javascript">
-window.onload = function() {
-  window.icons = {};
-  for (name in ADicons) {
-    icons[name] = {};
+AD = {
+    palette: {
+	mid: '#cccccc',
+	highlight: '#f7f7f7'
+    }
   }
-  plump.row(icons, {
-    x:200, 
-    y:100
+$(function() {
+  for (icon in iconAttrs) {
+    $('#canvas').append('<span class="'+icon + '"></span>');
+  }
+  $('#canvas').find('span').each(function() {
+    if ($(this).find('svg').length == 0 &&
+	  $(this).find('div').length == 0) {
+	var name = $(this).attr('class');
+	plumpette.single(iconAttrs[name], $(this));
+    }
   });
-/*
-  var stars = [
-    {"star2": {'fill':'none'}},
-    {"star2": {'fill':'none'}},
-    {"star2": {'fill':'none'}},
-    {"star2": {'fill':'none'}},
-    {"star2": {'fill':'none'}}
-  ];
-
-  plump.rowList(stars, {
-    x:200, 
-    y:300
-  });
-*/
-};
+});
 </script>
 </head>
 <body>
 <div id="canvas" style="font-size:12px;">
 </div>
+<script type="text/javascript" src="js/iconAttrs.js"></script>
 </body>
 </html>
