@@ -28,8 +28,10 @@ var plumpette = (function (Raphael) {
     };
     /****************/
 
-	var id = 0;
-    var icon = plumpette.icon = function(name, className, parentTarget, attrs) {
+    var iconSet = plumpette.iconSet = {};
+
+    var id = 0;
+    var icon = plumpette.icon = function(name, element, parentTarget, attrs) {
         var attrs = attrs || {},
             none = {fill: "#000", opacity: 0},
             x = attrs.x || 0,
@@ -37,27 +39,37 @@ var plumpette = (function (Raphael) {
         attrs.stroke = attrs.stroke || 'none';
         attrs.fill = attrs.fill || '#333';
 
-		//Target drawing
-		var paper = className[0],
-        offsetX = -(className.outerWidth()-className.width())/2,
-        offsetY = -(className.outerHeight()-className.height())/2;
+	//Target drawing
+	var paper = element[0],
+        offsetX = -(element.outerWidth()-element.width())/2,
+        offsetY = -(element.outerHeight()-element.height())/2;
 
         // Non-standard attributes
         attrs.size = attrs.size || 20;
-		    attrs.sizeW = attrs.size || paper.width;
-		    attrs.sizeH = attrs.size || paper.height;
-        attrs.transW = offsetX;
-        attrs.transH = offsetY;
+	attrs.sizeW = attrs.size || paper.width;
+	attrs.sizeH = attrs.size || paper.height;
+	attrs.scale = attrs.scale || [1,1];
+	attrs.trans = [offsetX, offsetY];
         if (attrs.hover) {
             attrs.hover.duration = attrs.hover.duration || 0;
         }	
-        var r = Raphael(paper, attrs.sizeW, attrs.sizeH);
+        // Draw the icons
+	var r = Raphael(paper, attrs.sizeW, attrs.sizeH);
         if (attrs.blur) {
-        	var s = r.path(ADicons[name]).attr(attrs).attr({fill:'#ccc'}).scale(.9, .9).blur(attrs.blur);
+            var s = r.path(plumpette.iconSet[name])
+		     .attr(attrs)
+		     .attr({fill:'#ccc'})
+		     .scale(.9, .9)
+		     .blur(attrs.blur);
         }
-        var icon = r.path(ADicons[name]).translate(attrs.transW, attrs.transH).attr(attrs);
+        var icon = r.path(plumpette.iconSet[name])
+		    .translate(attrs.trans)
+		    .attr(attrs)
+		    .scale(attrs.scale);
+        
+	// Pass along Events
         var target = parentTarget || r.rect(0, 0, attrs.sizeW, attrs.sizeH).attr({stroke:'none'});
-        target.click(function () {
+	target.click(function () {
 		      if (attrs.click) {
 		        icon.animate(attrs.click, attrs.click.duration);
 		      } 
@@ -68,7 +80,9 @@ var plumpette = (function (Raphael) {
 		    }, function () {
 		      icon.stop().attr({fill:attrs.fill, stroke:attrs.stroke, opacity:attrs.opacity});
 		    });
-      return { id: id++
+
+        // Return object
+	return { id: id++
                , icon: icon
                , target: target
                , attrs: attrs
@@ -100,28 +114,29 @@ var plumpette = (function (Raphael) {
                , draggable: function() { return draggable(this);}
                };
 
-    };
+        };
 
-	var single = plumpette.single = function(icons, className, target, attrs) {
+	// Make
+	var single = plumpette.single = function(icons, element, target, attrs) {
 		for (var name in icons) {
 			if (icons.hasOwnProperty(name)) {
-				icon(name, className, target, Object.extend(attrs, icons[name]));
+				icon(name, element, target, Object.extend(attrs, icons[name]));
 			}
 		}
 	};
   
-  var starRow = plumpette.starRow = function(icons, className, target, attrs) {
-    var attrs = attrs || {};
-    for (var i=0;i<icons.length;i++) {  
-        for (var name in icons[i]) {
-            if (icons[i].hasOwnProperty(name)) {
-            	className.append("<span class='iconSvg' id='pos"+i+"'></span>");
-                icon(name, className.find('#pos'+i), target, Object.extend(attrs, icons[i][name]));
-                attrs.x += 12;
-            }
-        }
-      }
-    };
+	var starRow = plumpette.starRow = function(icons, element, target, attrs) {
+	    var attrs = attrs || {};
+	    for (var i=0;i<icons.length;i++) {  
+		for (var name in icons[i]) {
+		    if (icons[i].hasOwnProperty(name)) {
+			element.append("<span class='iconSvg' id='pos"+i+"'></span>");
+			icon(name, element.find('#pos'+i), target, Object.extend(attrs, icons[i][name]));
+			attrs.x += 12;
+		    }
+		}
+	      }
+	};
     
 	return plumpette;
 }(Raphael));
