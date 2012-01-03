@@ -44,31 +44,29 @@ var plumpette = (function (Raphael) {
         offsetX = -(element.outerWidth()-element.width())/2,
         offsetY = -(element.outerHeight()-element.height())/2;
 
-        // Non-standard attributes
-        attrs.size = attrs.size || 20;
+    // Non-standard attributes
+    attrs.size = attrs.size || 20;
 	attrs.sizeW = attrs.size || paper.width;
 	attrs.sizeH = attrs.size || paper.height;
-	attrs.scale = attrs.scale || [1,1];
-	attrs.trans = [offsetX, offsetY];
-        if (attrs.hover) {
-            attrs.hover.duration = attrs.hover.duration || 0;
-        }	
-        // Draw the icons
+	attrs.offset = [offsetX, offsetY];
+
+    if (attrs.hover) {
+        attrs.hover.duration = attrs.hover.duration || 0;
+    }	
+    // Draw the icons
 	var r = Raphael(paper, attrs.sizeW, attrs.sizeH);
-        if (attrs.blur) {
-            var s = r.path(plumpette.iconSet[name])
-		     .attr(attrs)
-		     .attr({fill:'#ccc'})
-		     .scale(.9, .9)
-		     .blur(attrs.blur);
-        }
         var icon = r.path(plumpette.iconSet[name])
-		    .translate(attrs.trans)
+		    .translate(attrs.offset)
 		    .attr(attrs)
-		    .scale(attrs.scale);
+		    .translate(attrs.translation)
+		    .scale(attrs.scale)
+		    .rotate(attrs.rotation);
+        if (attrs.glow) {
+		    icon.glow(attrs.glow);
+        }
         
 	// Pass along Events
-        var target = parentTarget || r.rect(0, 0, attrs.sizeW, attrs.sizeH).attr({stroke:'none'});
+    var target = parentTarget || r.rect(0, 0, attrs.sizeW, attrs.sizeH).attr({stroke:'none'});
 	target.click(function () {
 		      if (attrs.click) {
 		        icon.animate(attrs.click, attrs.click.duration);
