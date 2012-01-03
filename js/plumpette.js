@@ -1,6 +1,5 @@
 /* 
  * Plumpette is a bite-sized version of plump, an icon management library
- * Customized for AppDirect
  * Created by Kai Chang and Mary Becica, 2011
  * plumpjs.com
  * 
